@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>try { if (sessionStorage.getItem("gtechnology-loader-seen") === "1") document.documentElement.classList.add("site-loader-seen"); } catch (_error) {}</script>
+    <meta name="theme-color" content="#151515" />
+    <title>Contact | G Technology</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+      :root {
+        --bg: #f3f3f1;
+        --text: #111;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Manrope', 'Segoe UI', sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+      }
+
+      .page {
+        width: 100%;
+        min-height: 100vh;
+        padding-top: 90px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .topbar {
+        position: fixed;
+        z-index: 10000;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 100%;
+        min-height: 90px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+        padding: 0 16px 0 22px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.38);
+        background: linear-gradient(105deg, #151515 0%, #1b1b1b 55%, #111 100%);
+        color: #f7f7f7;
+      }
+
+      .brand {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        gap: 12px;
+        color: #f7f7f7;
+        font-size: 1.35rem;
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .brand-mark {
+        display: block;
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+      }
+
+      .nav {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(22px, 2vw, 34px);
+        font-size: clamp(0.9rem, 1.15vw, 1.375rem);
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .nav a {
+        position: relative;
+        overflow: hidden;
+        padding: 11px 12px;
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.88);
+        text-decoration: none;
+        outline: none;
+        transition:
+          color 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+          box-shadow 0.2s ease,
+          transform 0.25s ease;
+      }
+
+      .nav a::before {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        border-radius: inherit;
+        background: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12'%3E%3Cpath d='M0 7 C25 0 25 14 50 7 S75 0 100 7 V12 H0Z' fill='%23fff'/%3E%3C/svg%3E");
+        background-repeat: repeat-x;
+        background-position: 0 0;
+        background-size: 100px 12px;
+        content: "";
+        transform: translateY(100%);
+        transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .nav a > span {
+        position: relative;
+        z-index: 1;
+      }
+
+      .nav a:hover::before,
+      .nav a:focus-visible::before {
+        transform: translateY(0);
+        animation: menu-wave 2s linear infinite;
+      }
+
+      .nav a[aria-current="page"]::before {
+        transform: translateY(0);
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible,
+      .nav a[aria-current="page"] {
+        color: #111;
+        box-shadow: 0 3px 13px rgba(255, 255, 255, 0.35);
+      }
+
+      main {
+        flex: 1;
+      }
+
+      .contact-section {
+        min-height: 100%;
+        padding: 32px 24px 54px;
+        background: transparent;
+      }
+
+      .contact-section-title {
+        margin: 0 0 42px;
+        color: #f4f7fa;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2.6rem, 4.5vw, 3.7rem);
+        font-weight: 700;
+        line-height: 1.1;
+        text-align: center;
+      }
+
+      .contact-section-title::after {
+        content: "";
+        display: block;
+        width: 68px;
+        height: 3px;
+        margin: 16px auto 0;
+        border-radius: 99px;
+        background: #52ce91;
+      }
+
+      .contact-panel {
+        width: min(1184px, 100%);
+        min-height: 566px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        overflow: hidden;
+        border-radius: 22px;
+        background: #f8f9f8;
+        box-shadow: 0 24px 70px rgba(0, 55, 43, 0.12);
+      }
+
+      .contact-info {
+        padding: clamp(32px, 4vw, 56px);
+        display: flex;
+        flex-direction: column;
+        background: #00372b;
+        color: #f4fbf7;
+        transition: background-color 0.35s ease, color 0.35s ease;
+      }
+
+      .contact-panel:hover .contact-info {
+        background: #f8f9f8;
+        color: #00372b;
+      }
+
+      .contact-info > h2 {
+        max-width: 540px;
+        margin: 0 0 28px;
+        font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+        line-height: 1.24;
+        letter-spacing: -0.045em;
+        font-weight: 500;
+      }
+
+      .contact-details {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 20px;
+      }
+
+      .contact-detail h2 {
+        margin: 0 0 8px;
+        color: #72e5a4;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .contact-panel:hover .contact-info .contact-detail h2 {
+        color: #16794f;
+      }
+
+      .contact-detail a,
+      .contact-detail address {
+        display: block;
+        color: rgba(244, 251, 247, 0.92);
+        font-size: 0.82rem;
+        font-style: normal;
+        line-height: 1.55;
+        text-decoration: none;
+        overflow-wrap: anywhere;
+      }
+
+      .contact-panel:hover .contact-info .contact-detail a,
+      .contact-panel:hover .contact-info .contact-detail address {
+        color: rgba(0, 55, 43, 0.82);
+      }
+
+      .contact-detail a:hover {
+        color: #fff;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .contact-panel:hover .contact-info .contact-detail a:hover {
+        color: #16794f;
+      }
+
+      .contact-panel:hover .contact-info .contact-detail a.map-link {
+        color: #fff;
+      }
+
+      .contact-location {
+        grid-column: 1 / -1;
+      }
+
+      .map-link {
+        position: relative;
+        min-height: 94px;
+        margin-top: 16px;
+        padding: 16px;
+        display: flex;
+        align-items: flex-start;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        background:
+          linear-gradient(135deg, transparent 47%, rgba(88, 202, 165, 0.24) 48%, rgba(88, 202, 165, 0.24) 51%, transparent 52%),
+          linear-gradient(30deg, transparent 35%, rgba(255, 255, 255, 0.13) 36%, rgba(255, 255, 255, 0.13) 38%, transparent 39%),
+          #0b4839;
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: filter 0.2s ease, transform 0.2s ease;
+      }
+
+      .map-link:hover {
+        filter: brightness(1.12);
+        transform: translateY(-2px);
+      }
+
+      .contact-form-panel {
+        padding: clamp(32px, 4vw, 56px);
+        background: #f8f9f8;
+        color: #111;
+        transition: background-color 0.35s ease, color 0.35s ease;
+      }
+
+      .contact-panel:hover .contact-form-panel {
+        background: #00372b;
+        color: #f4fbf7;
+      }
+
+      .contact-form-panel h2 {
+        margin: 0;
+        font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+        line-height: 1.15;
+        letter-spacing: -0.045em;
+      }
+
+      .contact-form-panel > p {
+        margin: 8px 0 20px;
+        color: #5d6260;
+        font-size: 0.82rem;
+        line-height: 1.5;
+      }
+
+      .contact-panel:hover .contact-form-panel > p,
+      .contact-panel:hover .contact-form-panel .form-note {
+        color: rgba(244, 251, 247, 0.78);
+      }
+
+      .contact-form {
+        display: grid;
+        gap: 12px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        border: 1px solid rgba(17, 17, 17, 0.18);
+        border-radius: 11px;
+        background: #fff;
+        color: #111;
+        font: inherit;
+        font-size: 0.82rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .contact-form input {
+        min-height: 46px;
+        padding: 0 14px;
+      }
+
+      .contact-form textarea {
+        min-height: 118px;
+        padding: 13px 14px;
+        resize: vertical;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: #21865e;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(33, 134, 94, 0.13);
+      }
+
+      .contact-form button {
+        min-height: 46px;
+        border: 0;
+        border-radius: 999px;
+        background: #1877d2;
+        color: #fff;
+        font: inherit;
+        font-size: 0.8rem;
+        font-weight: 800;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .contact-form button:hover {
+        transform: translateY(-1px);
+        background: #1165b7;
+      }
+
+      .contact-form .form-note {
+        margin: 0;
+        color: #5d6260;
+        font-size: 0.68rem;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .site-footer {
+        min-height: 42px;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #00291f;
+        color: #f4fbf7;
+        font-size: 0.72rem;
+        text-align: center;
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible {
+        transform: translateY(-4px);
+      }
+
+      @keyframes menu-wave {
+        to {
+          background-position: 100px 0;
+        }
+      }
+
+      .cta-top {
+        position: relative;
+        display: inline-flex;
+        flex: 0 0 auto;
+        width: 52px;
+        height: 52px;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border: none;
+        border-radius: 999px;
+        background: #1019ed;
+        color: #fff;
+        text-decoration: none;
+        transition: transform 0.25s ease, box-shadow 0.2s ease;
+      }
+
+      .cta-top::before {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        border-radius: inherit;
+        background: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12'%3E%3Cpath d='M0 7 C25 0 25 14 50 7 S75 0 100 7 V12 H0Z' fill='%23fff'/%3E%3C/svg%3E");
+        background-repeat: repeat-x;
+        background-position: 0 0;
+        background-size: 100px 12px;
+        content: "";
+        transform: translateY(100%);
+        transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .cta-top:hover::before,
+      .cta-top:focus-visible::before {
+        transform: translateY(0);
+        animation: menu-wave 2s linear infinite;
+      }
+
+      .cta-top:hover,
+      .cta-top:focus-visible {
+        transform: translateY(-4px);
+        box-shadow: 0 3px 13px rgba(255, 255, 255, 0.35);
+      }
+
+      .facebook-icon {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        width: 33px;
+        height: 33px;
+        place-items: center;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        font-size: 2.1rem;
+        font-weight: 800;
+        line-height: 1;
+        text-transform: lowercase;
+        transform: translateY(2px);
+        transition: color 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .cta-top:hover .facebook-icon,
+      .cta-top:focus-visible .facebook-icon {
+        color: #1877f2;
+      }
+
+      @media (max-width: 980px) {
+        .topbar {
+          gap: 18px;
+        }
+
+        .nav {
+          gap: 16px;
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          padding-top: 0;
+        }
+
+        .topbar {
+          position: sticky;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 12px 16px;
+          gap: 12px;
+        }
+
+        .brand {
+          gap: 7px;
+          font-size: 1rem;
+        }
+
+        .brand-mark {
+          width: 42px;
+          height: 42px;
+        }
+
+        .cta-top {
+          width: 42px;
+          height: 42px;
+        }
+
+        .facebook-icon {
+          width: 29px;
+          height: 29px;
+          font-size: 1.4rem;
+        }
+
+        .nav {
+          order: 3;
+          width: 100%;
+          flex: 0 0 100%;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          gap: 10px 20px;
+          padding: 6px 0 2px;
+          font-size: 0.82rem;
+        }
+
+        .contact-section {
+          padding: 36px 18px 42px;
+        }
+
+        .contact-section-title {
+          margin-bottom: 24px;
+        }
+
+        .contact-panel {
+          min-height: 0;
+          grid-template-columns: 1fr;
+          border-radius: 18px;
+        }
+
+        .contact-info,
+        .contact-form-panel {
+          padding: 30px 24px;
+        }
+
+        .contact-info h2 {
+          margin-bottom: 24px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .contact-details {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .contact-location {
+          grid-column: auto;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .nav a,
+        .nav a::before,
+        .cta-top,
+        .cta-top::before,
+        .facebook-icon,
+        .contact-info,
+        .contact-form-panel,
+        .map-link,
+        .contact-form button {
+          transition: none;
+        }
+
+        .contact-section-title,
+        .contact-panel {
+          animation: none;
+        }
+
+        .nav a:hover,
+        .nav a:focus-visible,
+        .cta-top:hover,
+        .cta-top:focus-visible {
+          transform: none;
+        }
+
+        .nav a:hover::before,
+        .nav a:focus-visible::before,
+        .cta-top:hover::before,
+        .cta-top:focus-visible::before {
+          animation: none;
+        }
+      }
+      .topbar {
+        min-height: 80px;
+        gap: clamp(12px, 2vw, 28px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.72);
+        background: rgba(255, 255, 255, 0.38);
+        box-shadow: 0 8px 24px rgba(20, 30, 25, 0.06);
+        -webkit-backdrop-filter: blur(18px) saturate(150%);
+        backdrop-filter: blur(18px) saturate(150%);
+        color: var(--text);
+      }
+
+      .brand {
+        color: var(--text);
+      }
+
+      .nav {
+        flex: 0 1 auto;
+        gap: 0;
+        max-width: calc(100% - 180px);
+        overflow-x: auto;
+        padding: 0 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.82);
+        background: rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 24px rgba(31, 80, 55, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+        -webkit-backdrop-filter: blur(16px) saturate(160%);
+        backdrop-filter: blur(16px) saturate(160%);
+        font-size: 0.875rem;
+        letter-spacing: 0;
+        text-transform: none;
+        scrollbar-width: none;
+      }
+
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav a {
+        flex: 0 0 auto;
+        padding: 12px 11px;
+        border-radius: 999px;
+        color: #111;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+
+      .nav a::before {
+        display: none;
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible {
+        color: #111;
+        background: rgba(0, 0, 0, 0.06);
+        box-shadow: none;
+        transform: none;
+      }
+
+      .nav a:focus-visible {
+        outline: 2px solid #245d40;
+        outline-offset: 2px;
+      }
+
+      .nav a[aria-current="page"] {
+        background: rgba(255, 255, 255, 0.46);
+        box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.75);
+      }
+
+      @media (max-width: 760px) {
+        .topbar {
+          min-height: 0;
+        }
+
+        .nav {
+          flex: 0 0 100%;
+          max-width: 100%;
+          justify-content: flex-start;
+          flex-wrap: nowrap;
+          gap: 0;
+          padding: 0 8px;
+          font-size: 0.82rem;
+        }
+
+        .nav a {
+          padding: 10px 11px;
+        }
+      }
+
+      .contact-section {
+        min-height: 0;
+        padding: 18px 24px 0;
+        background: transparent;
+      }
+
+      .contact-section-title {
+        margin: 0 0 30px;
+        color: #f4f7fa;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.8rem, 2.5vw, 2.1rem);
+        font-weight: 700;
+        line-height: 1.1;
+        text-align: center;
+      }
+
+      .contact-section-title::after {
+        width: 68px;
+        height: 3px;
+        margin-top: 14px;
+        background: #19a66b;
+        box-shadow: 0 0 8px rgba(25, 166, 107, .4);
+      }
+
+      .contact-map-layout {
+        position: relative;
+        width: min(1110px, 100%);
+        margin: 0 auto;
+        padding-bottom: 338px;
+      }
+
+      .contact-map {
+        display: block;
+        width: 100%;
+        height: clamp(280px, 26vw, 350px);
+        border: 0;
+        background: #e8edf0;
+      }
+
+      .contact-panel {
+        position: absolute;
+        z-index: 1;
+        top: calc(clamp(280px, 26vw, 350px) - 136px);
+        left: 5%;
+        width: 90%;
+        min-height: 0;
+        margin: 0;
+        display: block;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 14px 40px rgba(0, 0, 0, .16);
+      }
+
+      .contact-info,
+      .contact-panel:hover .contact-info {
+        padding: 26px 36px 12px;
+        display: block;
+        background: #fff;
+        color: #252525;
+      }
+
+      .contact-info > h2,
+      .contact-form-panel > h2,
+      .contact-form-panel > p {
+        display: none;
+      }
+
+      .contact-details {
+        display: grid;
+        grid-template-columns: 1.35fr 1fr;
+        gap: 12px 36px;
+      }
+
+      .contact-detail h2,
+      .contact-panel:hover .contact-info .contact-detail h2 {
+        margin: 0 0 4px;
+        color: #a3a3a3;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+
+      .contact-detail a,
+      .contact-detail address,
+      .contact-panel:hover .contact-info .contact-detail a,
+      .contact-panel:hover .contact-info .contact-detail address {
+        color: #3b3b3b;
+        font-size: .82rem;
+        line-height: 1.55;
+      }
+
+      .contact-detail a:hover,
+      .contact-panel:hover .contact-info .contact-detail a:hover {
+        color: #16794f;
+      }
+
+      .contact-email {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .contact-location {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .contact-location .map-link {
+        display: none;
+      }
+
+      .contact-form-panel,
+      .contact-panel:hover .contact-form-panel {
+        width: min(349px, calc(100% - 48px));
+        margin: 0 auto;
+        padding: 10px 0 20px;
+        background: #fff;
+        color: #252525;
+      }
+
+      .contact-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px 18px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        border: 1px solid #d1d6e0;
+        border-radius: 4px;
+        color: #252525;
+        font-size: .8rem;
+      }
+
+      .contact-form input {
+        min-height: 39px;
+        padding: 0 12px;
+      }
+
+      .contact-form input[name="email"],
+      .contact-form textarea,
+      .contact-form button,
+      .contact-form .form-note {
+        grid-column: 1 / -1;
+      }
+
+      .contact-form textarea {
+        min-height: 64px;
+        padding: 10px 12px;
+      }
+
+      .contact-form button,
+      .contact-panel:hover .contact-form button {
+        min-height: 36px;
+        border-radius: 4px;
+        background: #16794f;
+        color: #fff;
+        font-size: .78rem;
+        font-weight: 600;
+      }
+
+      .contact-form button:hover {
+        background: #11633f;
+      }
+
+      .contact-form .form-note,
+      .contact-panel:hover .contact-form-panel .form-note {
+        display: none;
+      }
+
+      .site-footer {
+        min-height: 42px;
+        padding: 0 20px;
+        font-size: .72rem;
+      }
+
+      @media (max-width: 700px) {
+        .contact-section { padding: 24px 16px 36px; }
+        .contact-section-title { margin-bottom: 26px; }
+        .contact-map-layout { padding-bottom: 0; }
+        .contact-map { height: 260px; }
+        .contact-panel {
+          position: relative;
+          top: auto;
+          left: auto;
+          width: 100%;
+          margin-top: -32px;
+          border-radius: 16px;
+        }
+        .contact-info,
+        .contact-panel:hover .contact-info { padding: 22px 20px 10px; }
+        .contact-details { grid-template-columns: 1fr; gap: 14px; }
+        .contact-email,
+        .contact-location { grid-column: auto; grid-row: auto; }
+        .contact-form-panel,
+        .contact-panel:hover .contact-form-panel {
+          width: auto;
+          margin: 0;
+          padding: 10px 20px 20px;
+        }
+        .contact-form { gap: 9px 12px; }
+      }
+    </style>
+    <link rel="stylesheet" href="assets/navigation.css" />
+    <link rel="stylesheet" href="assets/site-loader.css" />
+    <script src="assets/navigation.js" defer></script>
+    <script src="assets/site-loader.js" defer></script>
+  </head>
+  <body class="site-page">
+    <div class="site-loader" id="site-loader" role="status" aria-label="Loading G Technology">
+      <div class="site-loader-content">
+        <div class="site-loader-mark" aria-hidden="true">
+          <img class="site-loader-logo" src="assets/gtechnology-logo.png" alt="" />
+        </div>
+        <span class="site-loader-label">Loading<span></span><span></span><span></span></span>
+      </div>
+    </div>
+    <div class="page">
+      <header class="topbar">
+        <nav class="nav nav-left" aria-label="Main navigation">
+          <a href="home.html"><span>Home</span></a>
+          <a href="services.html"><span>Services</span></a>
+          <a href="clients.html"><span>Clients</span></a>
+        </nav>
+
+        <a class="brand" href="home.html" aria-label="G Technology home">
+          <img class="brand-mark" src="assets/gtechnology-logo.png" alt="" />
+          <span>G TECHNOLOGY</span>
+        </a>
+
+        <nav class="nav nav-right" aria-label="More navigation">
+          <a href="team.html"><span>Team</span></a>
+          <a href="contract.html" aria-current="page"><span>Contact</span></a>
+          <a class="facebook" href="https://www.facebook.com/profile.php?id=100045189956593" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook profile"><span class="facebook-icon" aria-hidden="true"><span class="facebook-glyph">f</span><span class="facebook-glyph facebook-glyph--incoming">f</span></span><span class="cta-label" aria-hidden="true"><span class="cta-label-text">Facebook</span><span class="cta-label-text cta-label-text--incoming">Facebook</span></span></a>
+        </nav>
+      </header>
+      <main aria-label="Contact">
+        <section class="contact-section" aria-labelledby="contact-title">
+          <h1 class="contact-section-title" id="contact-title">CONTACT</h1>
+          <div class="contact-map-layout">
+            <iframe
+              class="contact-map"
+              title="Map showing G Technology at 76 Quezon St, Cauayan City, Isabela"
+              src="https://maps.google.com/maps?q=76%20Quezon%20St%2C%20Cauayan%20City%2C%20Isabela&amp;output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          <div class="contact-panel">
+            <div class="contact-info">
+              <h2>We’re here to connect and assist you.</h2>
+              <div class="contact-details">
+                <div class="contact-detail">
+                  <h2>Phone</h2>
+                  <a href="tel:+639958804502">0995 880 4502</a>
+                  <a href="tel:+639972257554">0997 225 7554</a>
+                  <a href="tel:+639665342216">0966 534 2216</a>
+                </div>
+                <div class="contact-detail contact-email">
+                  <h2>Email</h2>
+                  <a href="mailto:gtechnologyorg2023@gmail.com">gtechnologyorg2023@gmail.com</a>
+                  <a href="mailto:rodolfotacang@g-technology.org">rodolfotacang@g-technology.org</a>
+                  <a href="mailto:mart.silvestre@g-technology.org">mart.silvestre@g-technology.org</a>
+                  <a href="mailto:joel.gumiran@g-technology.org">joel.gumiran@g-technology.org</a>
+                </div>
+                <div class="contact-detail contact-location">
+                  <h2>Address</h2>
+                  <address>76 Quezon St, Cauayan City, Isabela</address>
+                  <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=76+Quezon+St%2C+Cauayan+City%2C+Isabela" target="_blank" rel="noopener noreferrer">
+                    View our location on Google Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-form-panel">
+              <h2>Get in touch</h2>
+              <p>Reach out with an inquiry and our team will get back to you.</p>
+              <form class="contact-form" action="mailto:gtechnologyorg2023@gmail.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Name" aria-label="Name" autocomplete="name" required />
+                <input type="tel" name="phone" placeholder="Phone" aria-label="Phone" autocomplete="tel" required />
+                <input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required />
+                <textarea name="message" placeholder="Message" aria-label="Message" required></textarea>
+                <button type="submit">Contact Us</button>
+              </form>
+            </div>
+          </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer">
+        <span>Copyright GTechnology. All Rights Reserved | Designed by GTechnology</span>
+      </footer>
+    </div>
+  </body>
+</html>
